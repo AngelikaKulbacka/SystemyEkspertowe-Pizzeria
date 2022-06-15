@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="737.0" prefWidth="1574.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Pizzeria.PizzaController">
+   <center>
+      <SplitPane dividerPositions="0.5" prefHeight="438.0" prefWidth="671.0" BorderPane.alignment="CENTER">
+         <items>
+            <AnchorPane maxWidth="1020.0" minHeight="0.0" minWidth="1020.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="898.0" fitWidth="1031.0" layoutX="-8.0" layoutY="-7.0" opacity="0.4">
+                     <image>
+                        <Image url="@pizza.jpg" />
+                     </image>
+                  </ImageView>
+                  <VBox layoutX="7.0" layoutY="248.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="170.0" prefWidth="421.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 6; -fx-border-width: 3;" AnchorPane.leftAnchor="7.0">
+                     <children>
+                        <Label id="pizza_title" prefHeight="71.0" prefWidth="316.0" text="Pizza Size">
+                           <font>
+                              <Font name="Impact" size="34.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="68.0" fitWidth="64.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@pizza-size.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <HBox spacing="40.0">
+                           <children>
+                              <RadioButton fx:id="small" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="75.0" text="Small">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="togglepizzas" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="medium" mnemonicParsing="false" text="Medium" toggleGroup="$togglepizzas">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </RadioButton>
+                              <RadioButton fx:id="large" mnemonicParsing="false" text="Large" toggleGroup="$togglepizzas">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </RadioButton>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox spacing="10.0">
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                           <children>
+                              <Label text="Amount of pizzas:">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Button mnemonicParsing="false" onAction="#amountMinus" prefHeight="25.0" prefWidth="26.0" style="-fx-background-radius: 40;" text="-">
+                                 <opaqueInsets>
+                                    <Insets left="30.0" right="30.0" />
+                                 </opaqueInsets>
+                              </Button>
+                              <Label fx:id="amountOfPizzas" alignment="CENTER" contentDisplay="CENTER" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font></Label>
+                              <Button fx:id="plus" mnemonicParsing="false" onAction="#amountPlus" style="-fx-background-radius: 40;" text="+" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="30.0" right="10.0" top="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <VBox layoutX="-14.0" layoutY="105.0" spacing="30.0" />
+                  <Label id="title" layoutX="145.0" layoutY="14.0" prefHeight="63.0" prefWidth="803.0" text="Welcome to Pizzeria !!" textAlignment="CENTER">
+                     <font>
+                        <Font size="43.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="290.0" />
+                  <VBox layoutX="441.0" layoutY="87.0" prefHeight="184.0" prefWidth="515.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 6; -fx-border-width: 3;">
+                     <children>
+                        <Label id="toppings_title" prefHeight="64.0" prefWidth="299.0" text="Toppings">
+                           <font>
+                              <Font name="Impact" size="34.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="68.0" fitWidth="64.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" rotate="4.8">
+                                 <image>
+                                    <Image url="@Topping.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <HBox spacing="40.0">
+                           <children>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <CheckBox fx:id="cheese" mnemonicParsing="false" prefHeight="27.0" prefWidth="125.0" text="Cheese">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox fx:id="pepperoni" mnemonicParsing="false" prefHeight="24.0" prefWidth="153.0" text="Pepperoni">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox fx:id="mushrooms" mnemonicParsing="false" prefHeight="30.0" prefWidth="157.0" text="Mushrooms">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox fx:id="olives" mnemonicParsing="false" prefHeight="27.0" prefWidth="138.0" text="Olives">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                 </children>
+                              </VBox>
+                              <VBox spacing="10.0">
+                                 <children>
+                                    <CheckBox fx:id="tomato" mnemonicParsing="false" prefHeight="30.0" prefWidth="163.0" text="Tomato">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox fx:id="bacon" mnemonicParsing="false" prefHeight="24.0" prefWidth="153.0" text="Bacon">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox fx:id="onion" mnemonicParsing="false" prefHeight="27.0" prefWidth="143.0" text="Onion">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                    <CheckBox fx:id="pineapple" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" text="Pineapple">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </CheckBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="30.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox layoutX="7.0" layoutY="428.0" prefHeight="205.0" prefWidth="421.0" style="-fx-border-color: black; -fx-border-radius: 6; -fx-border-width: 3;" AnchorPane.leftAnchor="7.0">
+                     <children>
+                        <Label id="drinks_title" prefHeight="52.0" prefWidth="257.0" text="Drinks">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="68.0" fitWidth="64.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@drinks.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Impact" size="34.0" />
+                           </font>
+                        </Label>
+                        <VBox spacing="10.0">
+                           <children>
+                              <HBox prefWidth="445.0" spacing="30.0">
+                                 <children>
+                                    <RadioButton fx:id="coke" mnemonicParsing="false" prefHeight="30.0" prefWidth="113.0" text="Coke">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="toggledrinks" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="seven_up" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" text="7 Up" toggleGroup="$toggledrinks">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton fx:id="juice" mnemonicParsing="false" prefHeight="30.0" prefWidth="128.0" text="Juice" toggleGroup="$toggledrinks">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox spacing="30.0">
+                                 <children>
+                                    <RadioButton fx:id="pepsi" mnemonicParsing="false" prefHeight="30.0" prefWidth="141.0" text="Pepsi" toggleGroup="$toggledrinks">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton fx:id="fanta" mnemonicParsing="false" prefHeight="30.0" prefWidth="131.0" text="Fanta" toggleGroup="$toggledrinks">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton fx:id="red_bull" mnemonicParsing="false" prefHeight="28.0" prefWidth="196.0" text="Red bull" toggleGroup="$toggledrinks">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </HBox>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <Label text="Amount of drinks:">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="minus1" mnemonicParsing="false" onAction="#amountMinusDrink" prefHeight="25.0" prefWidth="26.0" style="-fx-background-radius: 40;" text="-">
+                                       <opaqueInsets>
+                                          <Insets left="30.0" right="30.0" />
+                                       </opaqueInsets>
+                                    </Button>
+                                    <Label fx:id="amountOfDrinks" alignment="CENTER" contentDisplay="CENTER" text="0" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="plus1" mnemonicParsing="false" onAction="#amountPlusDrink" style="-fx-background-radius: 40;" text="+" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="30.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox layoutX="440.0" layoutY="318.0" prefHeight="159.0" prefWidth="517.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 6; -fx-border-width: 3;">
+                     <children>
+                        <Label id="dippings_title" prefHeight="67.0" prefWidth="257.0" text="Dippings">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="68.0" fitWidth="64.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@dipping-sauce.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Impact" size="34.0" />
+                           </font>
+                        </Label>
+                        <VBox spacing="10.0">
+                           <children>
+                              <HBox spacing="30.0">
+                                 <children>
+                                    <RadioButton fx:id="ranch" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Ranch">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="toggledippings" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="garlic" mnemonicParsing="false" prefHeight="30.0" prefWidth="114.0" text="Garlic" toggleGroup="$toggledippings">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton fx:id="marinara" mnemonicParsing="false" prefHeight="30.0" prefWidth="191.0" text="Marinara" toggleGroup="$toggledippings">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox spacing="30.0">
+                                 <children>
+                                    <RadioButton fx:id="bbq" mnemonicParsing="false" prefHeight="30.0" prefWidth="108.0" text="BBQ" toggleGroup="$toggledippings">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton fx:id="hot" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" text="Hot" toggleGroup="$toggledippings">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton fx:id="chipotle" mnemonicParsing="false" prefHeight="30.0" prefWidth="133.0" text="Chipotle" toggleGroup="$toggledippings">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </RadioButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox spacing="10.0">
+                           <children>
+                              <Label text="Amount of dippings:">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Button fx:id="minusDipping" mnemonicParsing="false" onAction="#amountMinusDipping" prefHeight="25.0" prefWidth="26.0" style="-fx-background-radius: 40;" text="-">
+                                 <opaqueInsets>
+                                    <Insets left="30.0" right="30.0" />
+                                 </opaqueInsets>
+                              </Button>
+                              <Label fx:id="amountOfDippings" alignment="CENTER" contentDisplay="CENTER" text="0" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="plusDipping" mnemonicParsing="false" onAction="#amountPlusDipping" style="-fx-background-radius: 40;" text="+" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="30.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox fillWidth="false" layoutX="7.0" layoutY="87.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="421.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 6; -fx-border-width: 3;" AnchorPane.rightAnchor="592.0">
+                     <children>
+                        <Label id="pizza_title" prefHeight="71.0" prefWidth="316.0" text="Pizza Type">
+                           <font>
+                              <Font name="Impact" size="34.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="68.0" fitWidth="64.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@pizza-size.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <HBox>
+                           <children>
+                              <ComboBox fx:id="typePizza" onAction="#typePizzaChanged" prefHeight="26.0" prefWidth="208.0" promptText="Select type">
+                                 <opaqueInsets>
+                                    <Insets left="10.0" right="10.0" />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="30.0" right="30.0" />
+                           </opaqueInsets>
+                        </HBox>
+                        <HBox>
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <HBox>
+                                       <children>
+                                          <HBox>
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <HBox>
+                                                         <children>
+                                                            <HBox>
+                                                               <children>
+                                                                  <HBox>
+                                                                     <children>
+                                                                        <HBox>
+                                                                           <children>
+                                                                              <HBox />
+                                                                           </children>
+                                                                        </HBox>
+                                                                     </children>
+                                                                  </HBox>
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="30.0" right="10.0" top="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <VBox layoutX="440.0" layoutY="518.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="118.0" prefWidth="518.0" spacing="10.0" style="-fx-border-color: black; -fx-border-radius: 6; -fx-border-width: 3;">
+                     <children>
+                        <Label id="pizza_title" prefHeight="71.0" prefWidth="316.0" text="Student">
+                           <font>
+                              <Font name="Impact" size="34.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView fitHeight="68.0" fitWidth="64.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@student.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <HBox spacing="40.0">
+                           <children>
+                              <Label fx:id="student" text="Are you a student?">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <RadioButton fx:id="yesStudent" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="75.0" text="Yes">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="togglestudent" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="noStudent" mnemonicParsing="false" text="No" toggleGroup="$togglestudent">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </RadioButton>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="5.0" left="30.0" right="10.0" top="5.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="889.0" prefWidth="588.0">
+               <children>
+                  <ImageView fitHeight="975.0" fitWidth="982.0" layoutX="-40.0" layoutY="-73.0" opacity="0.4">
+                     <image>
+                        <Image url="@white-background.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label id="receipt_title" layoutX="135.0" prefHeight="61.0" prefWidth="214.0" text="Receipt">
+                     <font>
+                        <Font name="Heiti TC Light" size="41.0" />
+                     </font>
+                  </Label>
+                  <TextArea id="receipt" fx:id="receipt" editable="false" layoutX="17.0" layoutY="61.0" maxWidth="-Infinity" prefHeight="200.0" prefWidth="514.0">
+                     <font>
+                        <Font name="Heiti TC Light" size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets right="20.0" />
+                     </padding>
+                  </TextArea>
+                  <HBox layoutX="14.0" layoutY="563.0" prefHeight="38.0" prefWidth="271.0" spacing="30.0">
+                     <children>
+                        <Button fx:id="addPizza" mnemonicParsing="false" onAction="#addPizza" prefHeight="38.0" prefWidth="104.0" text="Add">
+                           <font>
+                              <Font name="Charter Roman" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="cancel" mnemonicParsing="false" onAction="#clearReceipt" prefHeight="38.0" prefWidth="104.0" text="Clear">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Charter Roman" size="17.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="confirm" mnemonicParsing="false" onAction="#confirmOrder" prefHeight="38.0" prefWidth="104.0" text="Confirm">
+                           <font>
+                              <Font name="Charter Roman" size="17.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label fx:id="cena" layoutX="34.0" layoutY="296.0" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </center>
+</BorderPane>

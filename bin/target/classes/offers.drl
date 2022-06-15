@@ -1,0 +1,61 @@
+import com.example.BiuroPodrozy.models.Travel
+import com.example.BiuroPodrozy.models.TravelPrice
+import java.math.BigDecimal
+
+
+rule "Cena za małą hawajską"
+	when
+		p: Pizza(p.pizzaType.equals("Hawaian"))
+
+	then
+		p.setPrice(BigDecimal.valueOf(24.0));
+	end
+
+rule "Cena za małą margherite"
+	when
+		p: Pizza(p.pizzaType.equals("Margherita"))
+
+	then
+		p.setPrice(BigDecimal.valueOf(20.0));
+	end
+
+rule "Cena za małą capricciosa"
+	when
+		p: Pizza(p.pizzaType.equals("Capricciosa"))
+
+	then
+		p.setPrice(BigDecimal.valueOf(22.0));
+	end
+
+rule "Cena za średnią pizzę"
+	when
+		p: Pizza(p.pizzaSize.equals("Medium"))
+
+	then
+		p.setPrice(p.getPrice().multiply(BigDecimal.valueOf(1.2)));
+	end
+
+rule "Cena za dużą pizzę"
+	when
+		p: Pizza(p.pizzaSize.equals("Large"))
+
+	then
+		p.setPrice(p.getPrice().multiply(BigDecimal.valueOf(1.3)));
+	end
+
+rule "Cena za składniki"
+	when
+		p: Pizza()
+
+	then
+		p.setPrice(p.getPrice().add(BigDecimal.valueOf(3.0).multiply(BigDecimal.valueOf(p.toppings))));
+	end
+
+rule "Cena za 3 duże pizzy lub więcej"
+	when
+		p: Pizza()
+		pR: PizzaReceipt(pR.hugePizzaCount() >= 3)
+
+	then
+		p.setPrice(p.getPrice().add());
+	end

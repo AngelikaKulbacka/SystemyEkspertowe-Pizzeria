@@ -1,0 +1,34 @@
+import com.example.Pizzeria.models.Pizza
+import com.example.Pizzeria.models.PizzaReceipt
+import com.example.Pizzeria.models.OrderDate
+import java.math.BigDecimal
+
+
+	
+rule "Student ma 10% znizki"
+	when
+		pR: PizzaReceipt()
+		p: Pizza(p.isStudent == true)
+
+	then
+		pR.setPrice(p.getPrice().multiply(BigDecimal.valueOf(0.9)));
+	end
+	
+rule "Zamowiono wiecej niz 3 duze pizze"
+	when
+		pR: PizzaReceipt()
+		p: Pizza(p.pizzaCount > 3 && p.pizzaSize.equals("Large"))
+
+	then
+		pR.setPrice(p.getPrice().multiply(BigDecimal.valueOf(0.5)));
+	end
+	
+rule "We wtorki Capriciosa tansza o 20 %"
+	when
+		pR: PizzaReceipt()
+		oD: OrderDate(oD.dayOfWeek.equals("TUESDAY"))
+		p: Pizza(p.pizzaType.equals("Capricciosa"))
+
+	then
+		pR.setPrice(p.getPrice().multiply(BigDecimal.valueOf(0.8)));
+	end
