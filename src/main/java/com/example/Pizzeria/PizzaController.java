@@ -231,23 +231,23 @@ public class PizzaController implements Initializable {
             switch (selectedRadioButton.getText()){
                 case "Small":
 //                    price+=2;
-//                	pizzaPrice = pizzaPrice.multiply(BigDecimal.valueOf(1.05));
+                	pizzaPrice = pizzaPrice.multiply(BigDecimal.valueOf(1.05));
 //                	price *= 1.05;
-//                    pizzaSize = "Small";
+                    pizzaSize = "Small";
                     break;
                 case "Medium":
                 	pizzaPrice = pizzaPrice.multiply(BigDecimal.valueOf(1.1));
-                    price+=4;
+//                    price+=4;
                     pizzaSize = "Medium";
                     break;
                 case "Large":
                 	pizzaPrice = pizzaPrice.multiply(BigDecimal.valueOf(1.15));
-                    price+=6;
+//                    price+=6;
                     pizzaSize = "Large";
                     break;
             }
 
-//            selectedRadioButton.setSelected(false);
+            selectedRadioButton.setSelected(false);
         }
 //        if(!amountOfPizzas.getText().equals("0")){
 //            napis+= "Amount of pizzas: "+ amountOfPizzas.getText()+ "\n";
