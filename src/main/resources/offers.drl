@@ -7,8 +7,6 @@ import com.example.Pizzeria.models.Drink
 import com.example.Pizzeria.models.Topping
 import java.math.BigDecimal
 
-
-
 rule "Student ma 10% znizki"
 	when
 		pR: PizzaReceipt()
@@ -52,12 +50,12 @@ rule "Taniej z piciem"
            	pR.addDiscount(new Discount("taniejZPiciem",BigDecimal.valueOf(0.1)));
    	end
 
-   	rule "Zamowiono zestaw"
-    	when
-    		pR: PizzaReceipt()
-    		p: Pizza(p.pizzaCount > 2)
-    		t: Topping(t.name.equals("Bacon") || t.name.equals("Pepperoni"))
+rule "Zamowiono zestaw"
+  	when
+   		pR: PizzaReceipt()
+   		p: Pizza(p.pizzaCount > 2)
+   		t: Topping(t.name.equals("Bacon") || t.name.equals("Pepperoni"))
 
-    	then
-    		pR.addDiscount(new Discount("zestaw",BigDecimal.valueOf(0.3)));
-    	end
+  	then
+   		pR.addDiscount(new Discount("zestaw",BigDecimal.valueOf(0.3)));
+   	end

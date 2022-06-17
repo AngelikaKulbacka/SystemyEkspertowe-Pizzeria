@@ -1,29 +1,22 @@
 package com.example.Pizzeria;
 
+import com.example.Pizzeria.config.DroolsFactory;
 import com.example.Pizzeria.models.*;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import org.kie.api.runtime.KieSession;
 
 import java.math.BigDecimal;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-
-import org.kie.api.runtime.KieSession;
-
-import com.example.Pizzeria.config.DroolsFactory;
-import org.mvel2.conversion.BigDecimalCH;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class PizzaController implements Initializable {
-    @FXML
-    private Label welcomeText;
     @FXML
     private ComboBox<String> typePizza;
     @FXML
@@ -136,7 +129,7 @@ public class PizzaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
         typePizza.setItems(pizzaList);
-        listaPizz = new ArrayList<Pizza>();
+        listaPizz = new ArrayList<>();
         toppingList = new ArrayList<>();
         orderDate = new OrderDate();
         orderTime = new OrderTime();
@@ -145,10 +138,7 @@ public class PizzaController implements Initializable {
         System.out.println(orderDate.getOrderDate().getDayOfWeek());
     }
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
+
 
     public  void typePizzaChanged(ActionEvent event)
     {
@@ -268,7 +258,7 @@ public class PizzaController implements Initializable {
         if( selectedDrinkRadioButton!=null){
             napis+="Drink: "+ selectedDrinkRadioButton.getText()+" x"+amountOfDrinks.getText() +"\n";
             price+=(Integer.parseInt(amountOfDrinks.getText())*5);
-            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(Integer.parseInt(amountOfDrinks.getText())*5));
+            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(Integer.parseInt(amountOfDrinks.getText())*5.0));
             selectedDrinkRadioButton.setSelected(false);
             amountAllDrink+=Integer.parseInt(amountOfDrinks.getText());
         }
@@ -365,7 +355,7 @@ public class PizzaController implements Initializable {
         if( selectedDippingRadioButton!=null){
             napis+="Dippings: "+ selectedDippingRadioButton.getText()+" x"+amountOfDippings.getText() +"\n";
             price+=Integer.parseInt(amountOfDippings.getText())*3;
-            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(Integer.parseInt(amountOfDippings.getText())*3));
+            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(Integer.parseInt(amountOfDippings.getText())*3.0));
             selectedDippingRadioButton.setSelected(false);
         }
 

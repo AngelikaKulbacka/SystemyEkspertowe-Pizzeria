@@ -1,7 +1,6 @@
 package com.example.Pizzeria.models;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 public class Topping {
     private String name;
