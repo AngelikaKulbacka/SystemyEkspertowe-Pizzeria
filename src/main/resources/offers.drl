@@ -4,6 +4,7 @@ import com.example.Pizzeria.models.OrderDate
 import com.example.Pizzeria.models.OrderTime
 import com.example.Pizzeria.models.Discount
 import com.example.Pizzeria.models.Drink
+import com.example.Pizzeria.models.Topping
 import java.math.BigDecimal
 
 
@@ -50,3 +51,13 @@ rule "Taniej z piciem"
    	then
            	pR.addDiscount(new Discount("taniejZPiciem",BigDecimal.valueOf(0.1)));
    	end
+
+   	rule "Zamowiono zestaw"
+    	when
+    		pR: PizzaReceipt()
+    		p: Pizza(p.pizzaCount > 2)
+    		t: Topping(t.name.equals("Bacon") || t.name.equals("Pepperoni"))
+
+    	then
+    		pR.addDiscount(new Discount("zestaw",BigDecimal.valueOf(0.3)));
+    	end

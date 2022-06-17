@@ -131,11 +131,13 @@ public class PizzaController implements Initializable {
 
     int price=0;
     List<Pizza> listaPizz;
+    List<Topping> toppingList;
     boolean isStudent = false;
     @Override
     public void initialize(URL url, ResourceBundle rb){
         typePizza.setItems(pizzaList);
         listaPizz = new ArrayList<Pizza>();
+        toppingList = new ArrayList<>();
         orderDate = new OrderDate();
         orderTime = new OrderTime();
         String orderDateText = orderDate.getOrderDate().getDayOfMonth() +  " " + orderDate.getOrderDate().getMonth() + " " + orderDate.getOrderDate().getYear();
@@ -281,48 +283,64 @@ public class PizzaController implements Initializable {
             napis+=cheese.getText()+" ";
 //            cheese.setSelected(false);
             price+=2;
-            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+//            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+            Topping cheeses = new Topping(cheese.getText(),BigDecimal.valueOf(2));
+            toppingList.add(cheeses);
         }
         if(pepperoni.isSelected()){
             napis+=pepperoni.getText()+ " ";
             price+=2;
 //            pepperoni.setSelected(false);
-            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+//            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+            Topping pepperonis = new Topping(pepperoni.getText(),BigDecimal.valueOf(2));
+            toppingList.add(pepperonis);
         }
         if(mushrooms.isSelected()){
             napis+=mushrooms.getText()+ " ";
             price+=2;
-            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+//            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+            Topping mushroom = new Topping(mushrooms.getText(),BigDecimal.valueOf(2));
+            toppingList.add(mushroom);
 //            mushrooms.setSelected(false);
         }
         if(olives.isSelected()){
             napis+=olives.getText()+ " ";
             price+=2;
-            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+//            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+            Topping olive = new Topping(olives.getText(),BigDecimal.valueOf(2));
+            toppingList.add(olive);
 //            olives.setSelected(false);
         }
         if(tomato.isSelected()){
             napis+=tomato.getText()+ " ";
             price+=2;
-            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+//            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
 //            tomato.setSelected(false);
+            Topping tomatos = new Topping(tomato.getText(),BigDecimal.valueOf(2));
+            toppingList.add(tomatos);
         }
         if(bacon.isSelected()){
             napis+=bacon.getText()+ " ";
             price+=2;
-            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+//            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+            Topping bacons = new Topping(bacon.getText(),BigDecimal.valueOf(2));
+            toppingList.add(bacons);
 //            bacon.setSelected(false);
         }
         if(onion.isSelected()){
             napis+=onion.getText()+ " ";
             price+=2;
-            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+//            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+            Topping onions = new Topping(onion.getText(),BigDecimal.valueOf(2));
+            toppingList.add(onions);
 //            onion.setSelected(false);
         }
         if(pineapple.isSelected()){
             napis+=pineapple.getText()+ " ";
             price+=2;
-            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+//            pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(2));
+            Topping pineapples= new Topping(pineapple.getText(),BigDecimal.valueOf(2));
+            toppingList.add(pineapples);
 //            pineapple.setSelected(false);
         }
 
@@ -422,6 +440,10 @@ public class PizzaController implements Initializable {
         	System.out.println(p.getPizzaSize());
         	System.out.println(p.getPizzaCount());
         	ksession.insert(p);
+        }
+        for (Topping p: toppingList) {
+            totalPrice =  totalPrice.add(p.getPrice());
+            ksession.insert(p);
         }
         ksession.insert(orderDate);
         ksession.insert(orderTime);
