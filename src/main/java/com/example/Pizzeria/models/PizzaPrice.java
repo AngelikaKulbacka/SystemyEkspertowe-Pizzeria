@@ -4,11 +4,7 @@ import java.math.BigDecimal;
 
 public class PizzaPrice {
 	private BigDecimal price;
-	private boolean isStudent;	
-	
-//	public TravelPrice() {
-//		this.price = new BigDecimal(0.0);
-//	}
+	private boolean isStudent;
 	
 	public BigDecimal getPrice() {
 		return price;

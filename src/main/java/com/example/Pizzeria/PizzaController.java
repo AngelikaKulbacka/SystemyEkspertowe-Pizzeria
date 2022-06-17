@@ -1,5 +1,6 @@
 package com.example.Pizzeria;
 
+import com.example.Pizzeria.models.Discount;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -430,5 +431,13 @@ public class PizzaController implements Initializable {
         else {
             cena.setText("Total price: " + totalPrice  + ", po regulach: " + pr.getPrice());
         }
+
+        BigDecimal poZnizce=totalPrice;
+        for(Discount discount:pr.getDiscountList()){
+            System.out.println(totalPrice.multiply(discount.getDiscount()));
+            poZnizce=poZnizce.subtract(totalPrice.multiply(discount.getDiscount()));
+            System.out.println("po:"+poZnizce);
+        }
+        cena.setText(cena.getText()+"po znizce: "+poZnizce);
     }
 }
