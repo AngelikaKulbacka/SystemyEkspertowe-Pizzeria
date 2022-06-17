@@ -131,7 +131,6 @@ public class PizzaController implements Initializable {
 
     int price=0;
     List<Pizza> listaPizz;
-    List<Drink> drinkList;
     boolean isStudent = false;
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -268,8 +267,6 @@ public class PizzaController implements Initializable {
             napis+="Drink: "+ selectedDrinkRadioButton.getText()+" x"+amountOfDrinks.getText() +"\n";
             price+=(Integer.parseInt(amountOfDrinks.getText())*5);
             pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(Integer.parseInt(amountOfDrinks.getText())*5));
-            drink= new Drink(selectedDrinkRadioButton.getText(),BigDecimal.valueOf(Integer.parseInt(amountOfDrinks.getText())*5),
-                    Integer.parseInt(amountOfDrinks.getText()));
             selectedDrinkRadioButton.setSelected(false);
             amountAllDrink+=Integer.parseInt(amountOfDrinks.getText());
         }
@@ -398,8 +395,6 @@ public class PizzaController implements Initializable {
         amountDipping=0;
         p.setStudent(isStudent);
         listaPizz.add(p);
-
-        drinkList.add(drink);
     }
 
     public void clearReceipt(ActionEvent event)
@@ -428,8 +423,6 @@ public class PizzaController implements Initializable {
         	System.out.println(p.getPizzaCount());
         	ksession.insert(p);
         }
-
-
         ksession.insert(orderDate);
         ksession.insert(orderTime);
         ksession.insert(drink);
