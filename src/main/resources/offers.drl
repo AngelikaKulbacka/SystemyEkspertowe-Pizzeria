@@ -1,6 +1,7 @@
 import com.example.Pizzeria.models.Pizza
 import com.example.Pizzeria.models.PizzaReceipt
 import com.example.Pizzeria.models.OrderDate
+import com.example.Pizzeria.models.OrderTime
 import com.example.Pizzeria.models.Discount
 import java.math.BigDecimal
 
@@ -26,9 +27,17 @@ rule "Zamowiono wiecej niz 3 duze pizze"
 rule "We wtorki Capriciosa tansza o 20 %"
 	when
 		pR: PizzaReceipt()
-		oD: OrderDate(oD.dayOfWeek.equals("FRIDAY"))
+		oD: OrderDate(oD.dayOfWeek.equals("TUESDAY"))
 		p: Pizza(p.pizzaType.equals("Capricciosa"))
 
 	then
     	pR.addDiscount(new Discount("wtorki",BigDecimal.valueOf(0.2)));
 	end
+
+	rule "Taniej przed poludniem"
+    	when
+    		pR: PizzaReceipt()
+    		oT: OrderTime(oT.earlyTime == true)
+    	then
+        	pR.addDiscount(new Discount("przedPoludniem",BigDecimal.valueOf(0.2)));
+    	end
