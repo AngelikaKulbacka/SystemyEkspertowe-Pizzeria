@@ -26,7 +26,7 @@ rule "Zamowiono wiecej niz 3 duze pizze"
 rule "We wtorki Capriciosa tansza o 20 %"
 	when
 		pR: PizzaReceipt()
-		oD: OrderDate(oD.dayOfWeek.equals("TUESDAY"))
+		oD: OrderDate(oD.dayOfWeek.equals("FRIDAY"))
 		p: Pizza(p.pizzaType.equals("Capricciosa"))
 
 	then

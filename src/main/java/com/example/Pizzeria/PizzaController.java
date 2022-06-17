@@ -11,9 +11,7 @@ import javafx.fxml.Initializable;
 
 import java.math.BigDecimal;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import org.kie.api.runtime.KieSession;
 
@@ -117,6 +115,8 @@ public class PizzaController implements Initializable {
 
     @FXML
     private Label cena;
+    @FXML
+    private TextArea discountArea;
     //    PizzaReceipt pizzaReceipt;
     final String[] pizzaItems ={"Margherita","Hawaian","Capricciosa"};
     final ObservableList<String> pizzaList = FXCollections.observableArrayList(pizzaItems);
@@ -433,11 +433,12 @@ public class PizzaController implements Initializable {
         }
 
         BigDecimal poZnizce=totalPrice;
-        for(Discount discount:pr.getDiscountList()){
-            System.out.println(totalPrice.multiply(discount.getDiscount()));
+        for(Discount discount:pr.getDiscountHashSet()){
+//            System.out.println(totalPrice.multiply(discount.getDiscount()));
             poZnizce=poZnizce.subtract(totalPrice.multiply(discount.getDiscount()));
-            System.out.println("po:"+poZnizce);
+//            System.out.println("po:"+poZnizce);
+            discountArea.setText(discountArea.getText() +"discount: "+discount.getNameDiscount() + " " + discount.getDiscount()+"\n");
         }
-        cena.setText(cena.getText()+"po znizce: "+poZnizce);
+        discountArea.setText(discountArea.getText() + "\npo znizce: "+poZnizce);
     }
 }
