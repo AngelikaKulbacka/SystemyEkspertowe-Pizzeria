@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 public class Drink {
 	private String name;
 	private BigDecimal price;
-
 	private int countDrink;
 
 	public int getCountDrink() {
@@ -16,22 +15,49 @@ public class Drink {
 		this.countDrink = countDrink;
 	}
 
-	public Drink(String name, BigDecimal price) {
-		super();
-		this.name = name;
-		this.price = price;
-	}
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public BigDecimal getPrice() {
 		return price;
 	}
+
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
+
+	public Drink(int countDrink) {
+		this.countDrink = countDrink;
+	}
+
+	public Drink(String name, BigDecimal price, int countDrink) {
+		this.name = name;
+		this.price = price;
+		this.countDrink = countDrink;
+	}
+
+	//	public Drink(String name, BigDecimal price) {
+//		super();
+////		this.name = name;
+////		this.price = price;
+//	}
+
+//	public String getName() {
+//		return name;
+//	}
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//	public BigDecimal getPrice() {
+//		return price;
+//	}
+//	public void setPrice(BigDecimal price) {
+//		this.price = price;
+//	}
 
 }

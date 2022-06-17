@@ -3,6 +3,7 @@ import com.example.Pizzeria.models.PizzaReceipt
 import com.example.Pizzeria.models.OrderDate
 import com.example.Pizzeria.models.OrderTime
 import com.example.Pizzeria.models.Discount
+import com.example.Pizzeria.models.Drink
 import java.math.BigDecimal
 
 
@@ -34,10 +35,18 @@ rule "We wtorki Capriciosa tansza o 20 %"
     	pR.addDiscount(new Discount("wtorki",BigDecimal.valueOf(0.2)));
 	end
 
-	rule "Taniej przed poludniem"
-    	when
-    		pR: PizzaReceipt()
-    		oT: OrderTime(oT.earlyTime == true)
-    	then
-        	pR.addDiscount(new Discount("przedPoludniem",BigDecimal.valueOf(0.2)));
-    	end
+rule "Taniej przed poludniem"
+   	when
+  		pR: PizzaReceipt()
+   		oT: OrderTime(oT.earlyTime == true)
+  	then
+       	pR.addDiscount(new Discount("przedPoludniem",BigDecimal.valueOf(0.2)));
+    end
+
+rule "Taniej z piciem"
+   	when
+   		pR: PizzaReceipt()
+       	d: Drink(d.countDrink > 2)
+   	then
+           	pR.addDiscount(new Discount("taniejZPiciem",BigDecimal.valueOf(0.1)));
+   	end

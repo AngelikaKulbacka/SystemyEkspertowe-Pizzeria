@@ -120,15 +120,18 @@ public class PizzaController implements Initializable {
     //    PizzaReceipt pizzaReceipt;
     final String[] pizzaItems ={"Margherita","Hawaian","Capricciosa"};
     final ObservableList<String> pizzaList = FXCollections.observableArrayList(pizzaItems);
-    
+
+    Drink drink;
     OrderDate orderDate;
     OrderTime orderTime;
     int amountPizza =1;
     int amountDrink =0;
     int amountDipping =0;
+    int amountAllDrink =0;
 
     int price=0;
     List<Pizza> listaPizz;
+    List<Drink> drinkList;
     boolean isStudent = false;
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -260,15 +263,15 @@ public class PizzaController implements Initializable {
             selectedDrinkRadioButton = (RadioButton) toggledrinks.getSelectedToggle();
         }
 
-        Drink drink;
+
         if( selectedDrinkRadioButton!=null){
             napis+="Drink: "+ selectedDrinkRadioButton.getText()+" x"+amountOfDrinks.getText() +"\n";
             price+=(Integer.parseInt(amountOfDrinks.getText())*5);
             pizzaPrice = pizzaPrice.add(BigDecimal.valueOf(Integer.parseInt(amountOfDrinks.getText())*5));
-            drink= new Drink( selectedDrinkRadioButton.getText(),
-                    BigDecimal.valueOf(Integer.parseInt(amountOfDrinks.getText())*5,
-                    Integer.parseInt(amountOfDrinks.getText()) ));
+            drink= new Drink(selectedDrinkRadioButton.getText(),BigDecimal.valueOf(Integer.parseInt(amountOfDrinks.getText())*5),
+                    Integer.parseInt(amountOfDrinks.getText()));
             selectedDrinkRadioButton.setSelected(false);
+            amountAllDrink+=Integer.parseInt(amountOfDrinks.getText());
         }
 
         if(cheese.isSelected() || pepperoni.isSelected()|| mushrooms.isSelected()||
@@ -395,6 +398,8 @@ public class PizzaController implements Initializable {
         amountDipping=0;
         p.setStudent(isStudent);
         listaPizz.add(p);
+
+        drinkList.add(drink);
     }
 
     public void clearReceipt(ActionEvent event)
@@ -412,7 +417,7 @@ public class PizzaController implements Initializable {
     {
         PizzaReceipt pr = new PizzaReceipt();
         pr.setPrice(BigDecimal.valueOf(0));
-
+        drink=new Drink(amountAllDrink);
         KieSession ksession = new DroolsFactory().getKieSession();
 
         BigDecimal totalPrice = new BigDecimal(0.0);
@@ -423,8 +428,11 @@ public class PizzaController implements Initializable {
         	System.out.println(p.getPizzaCount());
         	ksession.insert(p);
         }
+
+
         ksession.insert(orderDate);
         ksession.insert(orderTime);
+        ksession.insert(drink);
         ksession.insert(pr);
 		ksession.fireAllRules();
 
