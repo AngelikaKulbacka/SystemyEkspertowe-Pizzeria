@@ -126,6 +126,7 @@ public class PizzaController implements Initializable {
     List<Pizza> listaPizz;
     List<Topping> toppingList;
     boolean isStudent = false;
+    BigDecimal totalPrice = new BigDecimal(0.0);
     @Override
     public void initialize(URL url, ResourceBundle rb){
         typePizza.setItems(pizzaList);
@@ -408,6 +409,7 @@ public class PizzaController implements Initializable {
     public void clearReceipt(ActionEvent event)
     {
         receipt.setText("");
+        discountArea.setText("");
         for (Toggle t : togglestudent.getToggles()) {
             if (t instanceof RadioButton) {
                 ((RadioButton) t).setDisable(false);
@@ -415,6 +417,8 @@ public class PizzaController implements Initializable {
         }
         price=0;
         listaPizz.clear();
+        totalPrice = new BigDecimal(0.0);
+        cena.setText("Total price: " + totalPrice);
     }
     public void confirmOrder(ActionEvent event)
     {
@@ -422,8 +426,6 @@ public class PizzaController implements Initializable {
         pr.setPrice(BigDecimal.valueOf(0));
         drink=new Drink(amountAllDrink);
         KieSession ksession = new DroolsFactory().getKieSession();
-
-        BigDecimal totalPrice = new BigDecimal(0.0);
 
         for (Pizza p: listaPizz) {
         	totalPrice =  totalPrice.add(p.getPrice());
@@ -441,9 +443,7 @@ public class PizzaController implements Initializable {
         ksession.insert(pr);
 		ksession.fireAllRules();
 
-        BigDecimal zero = new BigDecimal(0.0);
-
-        if(pr.getPrice().compareTo(zero) == 0){
+        if(pr.getPrice().compareTo(new BigDecimal(0.0)) == 0){
             cena.setText("Total price: " + totalPrice);
         }
 
